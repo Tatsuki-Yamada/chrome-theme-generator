@@ -1,12 +1,19 @@
 import { Spacer, UIProvider, VStack } from '@yamada-ui/react';
 import ColorSelector from '../Base/ColorSelector';
 
-const ColorTab = () => {
+interface PropertyTabProps {
+  color_background_tab: string
+  onInputChange: (value: string) => void;
+}
+
+const ColorTab: React.FC<PropertyTabProps> = ({color_background_tab, onInputChange }) => {
   return (
     <UIProvider>
       <VStack divider={<Spacer />}>
-        <ColorSelector parameterName='background_tab' />
-        <ColorSelector parameterName='background_tab_inactive' />
+        <ColorSelector parameterName='background_tab' value={color_background_tab} onChange={onInputChange}/>
+
+
+        {/* <ColorSelector parameterName='background_tab_inactive' />
         <ColorSelector parameterName='background_tab_incognito' />
         <ColorSelector parameterName='background_tab_incognito_inactive' />
         <ColorSelector parameterName='bookmark_text' />
@@ -26,7 +33,7 @@ const ColorTab = () => {
         <ColorSelector parameterName='tab_text' />
         <ColorSelector parameterName='toolbar' />
         <ColorSelector parameterName='toolbar_button_icon' />
-        <ColorSelector parameterName='toolbar_text' />
+        <ColorSelector parameterName='toolbar_text' /> */}
       </VStack>
     </UIProvider>
   );

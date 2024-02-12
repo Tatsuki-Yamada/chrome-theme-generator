@@ -3,11 +3,13 @@ import ColorTab from './ColorTab';
 import PropertyTab from './PropertyTab';
 
 interface ParameterTabsProps {
-  sharedValue: string;
-  onInputChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  name: string;
+  color_background_tab: string
+  onNameChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onColorBackgroundTabChange: (value: string) => void;
 }
 
-const ParameterTabs: React.FC<ParameterTabsProps> = ({sharedValue, onInputChange }) => {
+const ParameterTabs: React.FC<ParameterTabsProps> = ({name, color_background_tab, onNameChange, onColorBackgroundTabChange}) => {
   return (
     <UIProvider>
       <Tabs>
@@ -15,11 +17,11 @@ const ParameterTabs: React.FC<ParameterTabsProps> = ({sharedValue, onInputChange
         <Tab>Color</Tab>
 
         <TabPanel>
-          <PropertyTab sharedValue={sharedValue} onInputChange={onInputChange} />
+          <PropertyTab name={name} onInputChange={onNameChange} />
         </TabPanel>
 
         <TabPanel>
-          <ColorTab />
+          <ColorTab color_background_tab={color_background_tab} onInputChange={onColorBackgroundTabChange} />
         </TabPanel>
       </Tabs>
     </UIProvider>

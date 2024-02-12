@@ -16,12 +16,6 @@ const PropertyTab: React.FC<PropertyTabProps> = ({name, onInputChange }) => {
         value={name}
         onChange={onInputChange}
       />
-      <TextForm
-        parameterName='hoge'
-        defaultString='custom-theme'
-        value={name}
-        onChange={onInputChange}
-      />
       </VStack>
     </UIProvider>
   );

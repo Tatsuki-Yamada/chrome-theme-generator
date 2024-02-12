@@ -1,7 +1,9 @@
 import { Layer, Rect, Stage } from "react-konva";
 
 interface ThemeCanvasProps {
-    color_background_tab: string;
+    color_frame: string;
+    color_toolbar: string;
+    color_button_background: string;
 }
 
 const rgbaToHex = (rgba: string): string => {
@@ -23,16 +25,24 @@ const rgbaToHex = (rgba: string): string => {
     return parseFloat(rgbaValues[4]);
   };
 
-const ThemeCanvas: React.FC<ThemeCanvasProps> = ({color_background_tab}) => {
+const ThemeCanvas: React.FC<ThemeCanvasProps> = ({color_frame, color_toolbar, color_button_background}) => {
     return <Stage width={400} height={500}>
         <Layer>
-        <Rect stroke='black' strokeWidth={4} x={5} y={5} width={350} height={490} />
+          {/*外枠*/}
         <Rect stroke='gray' strokeWidth={1} x={25} y={25} width={300} height={400} />
-        <Rect fill={rgbaToHex(color_background_tab)} opacity={extractAlphaFromRGBA(color_background_tab)} x={25} y={25} width={300} height={20} />
-        <Rect fill="red" opacity={extractAlphaFromRGBA(color_background_tab)} x={25} y={45} width={300} height={35} />
-        <Rect fill="gray" opacity={extractAlphaFromRGBA(color_background_tab)} x={65} y={48} width={200} height={15} />
-
+          {/*Frame*/}
+        <Rect fill={rgbaToHex(color_frame)} opacity={extractAlphaFromRGBA(color_frame)} x={25} y={25} width={300} height={20} />
         
+          {/*toolbar*/}
+        <Rect fill={rgbaToHex(color_toolbar)} opacity={extractAlphaFromRGBA(color_toolbar)} x={75} y={25} width={25} height={20} />
+        <Rect fill={rgbaToHex(color_toolbar)} opacity={extractAlphaFromRGBA(color_toolbar)} x={25} y={45} width={300} height={35} />
+
+          {/*button_background*/}
+        <Rect fill={rgbaToHex(color_button_background)} opacity={extractAlphaFromRGBA(color_button_background)} x={250} y={25} width={75} height={20} />
+
+          {/*検索窓*/}
+        <Rect fill="gray" opacity={extractAlphaFromRGBA(color_frame)} x={65} y={48} width={200} height={15} />
+
         </Layer>
     </Stage>;
 };

@@ -4,12 +4,17 @@ import PropertyTab from './PropertyTab';
 
 interface ParameterTabsProps {
   name: string;
-  color_background_tab: string
+  color_frame: string
+  color_toolbar: string
+  color_button_background: string
   onNameChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   onColorBackgroundTabChange: (value: string) => void;
+  onToolbarChange: (value: string) => void;
+  onButonBackgroundChange: (value: string) => void;
+
 }
 
-const ParameterTabs: React.FC<ParameterTabsProps> = ({name, color_background_tab, onNameChange, onColorBackgroundTabChange}) => {
+const ParameterTabs: React.FC<ParameterTabsProps> = ({name, color_frame, color_toolbar, color_button_background, onNameChange, onColorBackgroundTabChange, onToolbarChange, onButonBackgroundChange}) => {
   return (
     <UIProvider>
       <Tabs>
@@ -21,7 +26,7 @@ const ParameterTabs: React.FC<ParameterTabsProps> = ({name, color_background_tab
         </TabPanel>
 
         <TabPanel>
-          <ColorTab color_background_tab={color_background_tab} onInputChange={onColorBackgroundTabChange} />
+          <ColorTab color_frame={color_frame} color_toolbar={color_toolbar} color_button_background={color_button_background} onInputChange={onColorBackgroundTabChange} onToolbarChange={onToolbarChange} onButonBackgroundChange={onButonBackgroundChange} />
         </TabPanel>
       </Tabs>
     </UIProvider>

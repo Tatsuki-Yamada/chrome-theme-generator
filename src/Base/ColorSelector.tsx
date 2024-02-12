@@ -6,8 +6,6 @@ interface Props{
   onChange: (value: string) => void;
 }
 
-
-
 const ColorSelector: React.FC<Props> = ({parameterName, value, onChange}) => {
   return (
     <UIProvider>
